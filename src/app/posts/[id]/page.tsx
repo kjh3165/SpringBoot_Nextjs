@@ -17,10 +17,11 @@ export default function Page({ params }: { params: Promise<{ id: number }> }) {
             .then((data) => setPost(data))
     }, [])
 
+    if (post === null) return <div>로딩중...</div>
+
     return (
         <>
             <h1>게시글 상세페이지</h1>
-            {post === null && <div>로딩중...</div>}
             <>
                 <div>게시글 번호: {post?.id}</div>
                 <div>게시글 제목: {post?.title}</div>

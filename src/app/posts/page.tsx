@@ -11,12 +11,11 @@ export default function Page() {
             .then((data) => setPosts(data))
     }, [])
 
+    if (posts.length === 0) return <div>로딩중...</div>
+
     return (
         <>
             <h1>글 목록</h1>
-
-            {posts.length === 0 && <div>로딩중...</div>}
-
             <ul>
                 {posts.map((post) => (
                     <li key={post.id}>{post.title}</li>
