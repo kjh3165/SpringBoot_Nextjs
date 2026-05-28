@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import Link from 'next/link'
 import './globals.css'
 
 const geistSans = Geist({
@@ -29,15 +30,18 @@ export default function RootLayout({
             >
                 <header>
                     <nav className="flex">
-                        <a href="/" className="p-2 rounded hover:bg-gray-100">
+                        <Link
+                            href="/"
+                            className="p-2 rounded hover:bg-gray-100"
+                        >
                             홈
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                             href="/posts"
                             className="p-2 rounded hover:bg-gray-100"
                         >
                             글목록
-                        </a>
+                        </Link>
                     </nav>
                 </header>
                 <main>{children}</main>
