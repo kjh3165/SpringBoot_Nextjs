@@ -2,8 +2,12 @@
 
 import { use, useEffect, useState } from 'react'
 
-export default function Page({ params }) {
-    const [post, setPost] = useState({})
+export default function Page({ params }: { params: Promise<{ id: number }> }) {
+    const [post, setPost] = useState<{
+        id: number
+        title: string
+        content: string
+    } | null>(null)
 
     const { id } = use(params)
 
@@ -16,9 +20,9 @@ export default function Page({ params }) {
     return (
         <>
             <h1>게시글 상세페이지</h1>
-            <div>게시글 번호: {post.id}</div>
-            <div>게시글 제목: {post.title}</div>
-            <div>게시글 내용: {post.content}</div>
+            <div>게시글 번호: {post?.id}</div>
+            <div>게시글 제목: {post?.title}</div>
+            <div>게시글 내용: {post?.content}</div>
         </>
     )
 }
