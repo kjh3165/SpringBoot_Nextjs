@@ -25,6 +25,21 @@ export default function Page() {
             contentInput.focus()
             return
         }
+
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/posts`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: titleInput.value,
+                content: contentInput.value,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                alert(data.msg)
+            })
     }
 
     return (
