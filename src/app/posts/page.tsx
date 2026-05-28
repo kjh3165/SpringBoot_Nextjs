@@ -22,7 +22,8 @@ export default function Page() {
                 {posts.map((post) => (
                     <li key={post.id}>
                         {post.id} /
-                        <Link href={`/posts/${post.id}`}>{post.title}</Link>
+                        <Link href={`/posts/${post.id}`}>{post.title}</Link> /
+                        {post.content}
                     </li>
                 ))}
             </ul>
