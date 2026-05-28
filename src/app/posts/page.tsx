@@ -1,11 +1,12 @@
 'use client'
 
 import { apiFetch } from '@/lib/backend/client'
+import { PostDto } from '@/types/post'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function Page() {
-    const [posts, setPosts] = useState<{ id: number; title: string }[]>([])
+    const [posts, setPosts] = useState<PostDto[]>([])
 
     useEffect(() => {
         // (data) => setPosts(data) == setPosts
