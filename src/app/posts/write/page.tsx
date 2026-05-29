@@ -1,5 +1,7 @@
 'use client'
 
+import { apiFetch } from '@/lib/backend/client'
+
 export default function Page() {
     const handleSumbit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -26,7 +28,7 @@ export default function Page() {
             return
         }
 
-        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/posts`, {
+        apiFetch(`/api/v1/posts`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,11 +37,7 @@ export default function Page() {
                 title: titleInput.value,
                 content: contentInput.value,
             }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                alert(data.msg)
-            })
+        }).then((res) => alert(res.msg))
     }
 
     return (
