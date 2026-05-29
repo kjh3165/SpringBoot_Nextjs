@@ -1,8 +1,11 @@
 'use client'
 
 import { apiFetch } from '@/lib/backend/client'
+import { useRouter } from 'next/navigation'
 
 export default function Page() {
+    const router = useRouter()
+
     const handleSumbit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
@@ -34,7 +37,10 @@ export default function Page() {
                 title: titleInput.value,
                 content: contentInput.value,
             }),
-        }).then((res) => alert(res.msg))
+        }).then((res) => {
+            alert(res.msg)
+            router.push(`/posts/${res.data.id}`)
+        })
     }
 
     return (
