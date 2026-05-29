@@ -39,7 +39,7 @@ export default function Page() {
             }),
         }).then((res) => {
             alert(res.msg)
-            router.push(`/posts/${res.data.id}`)
+            router.replace(`/posts/${res.data.id}`)
         })
     }
 
@@ -52,6 +52,7 @@ export default function Page() {
                     type="text"
                     name="title"
                     placeholder="제목"
+                    autoFocus
                 />
                 <textarea
                     className="border p-2 rounded"
