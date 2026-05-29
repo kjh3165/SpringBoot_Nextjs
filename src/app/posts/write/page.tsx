@@ -30,9 +30,6 @@ export default function Page() {
 
         apiFetch(`/api/v1/posts`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
             body: JSON.stringify({
                 title: titleInput.value,
                 content: contentInput.value,
