@@ -10,7 +10,9 @@ export default function Page({ params }: { params: Promise<{ id: number }> }) {
     const { id } = use(params)
 
     const [post, setPost] = useState<PostDto | null>(null)
-    const [postComments, setPostComments] = useState<PostCommentDto[]>([])
+    const [postComments, setPostComments] = useState<PostCommentDto[] | null>(
+        null,
+    )
 
     const router = useRouter()
 
@@ -57,9 +59,9 @@ export default function Page({ params }: { params: Promise<{ id: number }> }) {
             </div>
 
             <h2>댓글 목록</h2>
-            {postComments.length === 0 && <div>댓글이 로딩중...</div>}
+            {postComments === null && <div>댓글이 로딩중...</div>}
 
-            {postComments.length > 0 && (
+            {postComments !== null && postComments.length > 0 && (
                 <ul>
                     {postComments.map((comment) => (
                         <li key={comment.id}>{comment.content}</li>
